@@ -1,0 +1,62 @@
+* {
+    /* padding: 0; */
+    /* margin: 0; */
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ddd;
+}
+
+#login-container {
+    width: 500px; 
+    border: 1px solid #000; 
+    margin: 25px auto; 
+    padding: 1%;
+    background-color: #fff;
+}
+
+.form-connexion label {
+    display: inline-block;
+    width: 150px;
+}
+
+#container {
+    width: 100%;
+    display: grid;
+    grid-auto-columns: minmax(200px, auto);
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 1em;
+    grid-template-areas: "un un un un"
+                         "deux trois quatre quatre";
+}
+
+.grid {
+    background-color: #fff;
+    /* border: 1px solid black; */
+    padding: 1%;
+}
+
+.un {
+    grid-area: un;
+    display: flex;
+    justify-content: space-between;
+}
+
+.deux {
+    grid-area: deux;
+}
+
+.trois {
+    grid-area: trois;
+}
+
+.quatre {
+    grid-area: quatre;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid red;
+}
