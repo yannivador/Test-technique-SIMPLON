@@ -38,29 +38,35 @@
         <section class="grid deux">
             <header class="section-header">
                 <h2>Liste des utilisateurs</h2>
-                <a href="logout">Ajouter un utilisateur</a>
+                <h3><a href="process/ajout_utilisateur.php">Ajouter un utilisateur</a></h3>
             </header>
             <?php
-                foreach ($utilisateurs as $utilisateur) {
-                    echo ($utilisateur['utilisateur_nom']) . '<br>';
+                if (empty($utilisateurs)) {
+                    echo "Aucun utilisateur enregistré.";
+                } else {
+                    foreach ($utilisateurs as $utilisateur) {
+                        // echo ($utilisateur['utilisateur_nom']) . '<br>';
+                        echo $gestion->afficheEditeAndSuppr($utilisateur['utilisateur_nom'], $utilisateur['utilisateur_id']);
+                    }
                 }
             ?>
         </section>
         <section class="grid trois">
             <header class="section-header">
                 <h2>Liste des ordinateurs</h2>
-                <a href="logout">Ajouter un ordinateur</a>
+                <h3><a href="process/ajout_ordinateur.php">Ajouter un ordinateur</a></h3>
             </header>
             <?php
                 foreach ($ordinateurs as $ordinateur) {
-                    echo ($ordinateur['ordi_nom']) . '<br>';
+                    // echo ($ordinateur['ordi_id']) . '<br>';
+                    echo $gestion->afficheEditeAndSuppr($ordinateur['ordi_nom'], $ordinateur['ordi_id']);
                 }
             ?>
         </section>
         <section class="grid quatre">
             <header class="section-header">
                 <h2>Liste des attributions</h2>
-                <a href="logout">Nouvelle attribution</a>
+                <h3><a href="attribution.php">Nouvelle attribution</a></h3>
             </header>
 
         </section>
