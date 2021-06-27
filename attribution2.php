@@ -7,14 +7,18 @@
         header('location:login.php');
     }
 
+    $choix_menu = 1;
+
     require('class/Gestion.php');
     require('configuration.php');
 
     $gestion = new Gestion();
 
-    $mysqli       = $gestion->connexionBDD();
+    $mysqli  = $gestion->connexionBDD();
 
-    var_dump($_POST);
+    include('process/ajout_attribution.php');
+
+    // var_dump($_POST);
 
     //  Récupération des post
 
@@ -22,13 +26,14 @@
         $ordi_choisi = $_POST['ordi'];
     }
 
-    if (isset($_POST['utilisateur'])) {
-        $utilisateur_choisi = $_POST['utilisateur'];
+    if (isset($_POST['utilisateur_choisi'])) {
+        $utilisateur_choisi = $_POST['utilisateur_choisi'];
     }
 
     if (isset($_POST['date_choisi'])) {
         $date_choisi = $_POST['date_choisi'];
     }
+
 
 ?>
 
@@ -44,26 +49,35 @@
 </head>
 
 <body>
-    <div id="login-container">
-        <form action="attribution2.php" method="POST" >
-            <h1>Formulaire d'attribution</h1>
-            <p><?php if (isset($utilisateur_choisi)) { echo $utilisateur_choisi;} ?></p>
-            <p>Horaire disponible pour <?php if(isset($ordi_choisi)) { echo $ordi_choisi;} ?> et le <?php if (isset($date_choisi)) { echo $date_choisi;} ?> :</p>
-            <p>
-                <label>Début : </label>
-                <input type="time" name="debut_horaire">
-            </p>
-            <p>
-                <label>Fin : </label>
-                <input type="time" name="fin-horaire">
-            </p>
+    <div id="container">    
+        <header class="grid un">
+            <?php require('main-header.php'); ?>
+            <?php require('menu.php'); ?>
+        </header>
+        <div id="login-container" >
+            <form action="attribution2.php" method="POST" >
+                <h1>Formulaire d'attribution</h1>
+                <input name="utilisateur_choisi" type="hidden" value="<?php if (isset($utilisateur_choisi)) { echo $utilisateur_choisi;} ?>">
+                <input name="ordi_choisi" type="hidden" value="<?php if (isset($ordi_choisi)) { echo $ordi_choisi;} ?>">
+                <input name="date_choisi" type="hidden" value="<?php if (isset($date_choisi)) { echo $date_choisi;} ?>">
+                <p>
+                    <label>Début : </label>
+                    <input type="time" name="debut_horaire">
+                </p>
+                <p>
+                    <label>Fin : </label>
+                    <input type="time" name="fin_horaire">
+                </p>
 
-            <p>
-                <input name="submit-form" type="submit" value="Envoyer">
-            </p>
-            <a href="attribution.php">Précédent</a>
-            <!-- INSERT INTO `attribution` (`attribution_id`, `attribution_utilisateur_id`, `attribution_ordi_id`, `attribution_date`, `attribution_horaire_debut`, `attribution_horaire_fin`) VALUES (NULL, '4', '2', '2021-06-17', '19:00:00', '20:00:00'); -->
-        </form>
+                <p>
+                    <input name="submit_form" type="submit" value="Envoyer">
+                </p>
+                <a href="attribution.php">Précédent</a>
+                <!-- INSERT INTO `attribution` (`attribution_id`, `attribution_utilisateur_id`, `attribution_ordi_id`, `attribution_date`, `attribution_horaire_debut`, `attribution_horaire_fin`) VALUES (NULL, '4', '2', '2021-06-17', '19:00:00', '20:00:00'); -->
+            </form>
+            <p><?php if (isset($req)) { echo $req;} ?></p>
+            <p style="background-color: green;"><?php if (isset($message)) { echo $message;} ?></p>
+        </div>
     </div>
 </body>
 <?php
