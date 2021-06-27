@@ -1,8 +1,7 @@
 <?php
-    define("BDD_SERVEUR", 'localhost');
-    define("BDD_NAME", 'simplon_test-technique');
-    define("BDD_USER", 'root');
-    define("BDD_MDP", '');
-
+    define("BDD_SERVEUR", 'mysql-yannivador.alwaysdata.net');
+    define("BDD_NAME", 'yannivador_test_technique');
+    define("BDD_USER", '238563');
+    define("BDD_MDP", 'ibanez.sa90');
 
 ?>

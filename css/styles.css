@@ -1,19 +1,13 @@
 * {
-    /* padding: 0; */
-    /* margin: 0; */
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
+    list-style: none;
 }
 
 body {
-    background-color: #ddd;
-}
-
-#login-container {
-    width: 500px; 
-    border: 1px solid #000; 
-    margin: 25px auto; 
-    padding: 1%;
-    background-color: #fff;
+    background-color: #FFF0D1;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .form-connexion label {
@@ -26,21 +20,63 @@ body {
     display: grid;
     grid-auto-columns: minmax(200px, auto);
     grid-auto-rows: minmax(100px, auto);
-    grid-gap: 1em;
-    grid-template-areas: "un un un un"
-                         "deux trois quatre quatre";
+    grid-gap: 0.5em;
+    grid-template-areas: "un un un un un un un"
+                         ". deux deux quatre quatre quatre ."
+                         ". deux deux quatre quatre quatre ."
+                         ". trois trois quatre quatre quatre ."
+                         ". trois trois quatre quatre quatre .";
 }
 
 .grid {
     background-color: #fff;
     /* border: 1px solid black; */
-    padding: 1%;
+    /* padding: 1%; */
 }
 
 .un {
     grid-area: un;
+    display: inline-block;
+    /* justify-content: space-between; */
+    /* padding: 1%; */
+}
+
+.main-header {
     display: flex;
     justify-content: space-between;
+    padding: 1%;
+    background-color: #2B2B2B;
+    color: white;
+}
+
+.main-header a {
+    color: white;
+}
+
+.main-header a:hover {
+    color: #FFF0D1;
+}
+
+.menu {
+    background-color: #ccc;
+    width: 100%;
+    /* border: 1px solid black; */
+    display: flex;
+    background-color: #2B2B2B;
+    border-top: 1px solid grey;
+}
+
+.menu a {
+    display: block;
+    height: 60px;
+    text-decoration: none;
+    border-right: 1px solid grey;
+    padding: 1em;
+    color: grey;
+}
+
+.menu a:hover {
+    color: #FFF0D1;
 }
 
 .deux {
@@ -58,5 +94,54 @@ body {
 .section-header {
     display: flex;
     justify-content: space-between;
-    border: 1px solid red;
+    background-color: #F4D277;
+    padding: 1%;
+}
+
+.section-header h2 {
+    color: #2B2B2B;
+}
+
+.section-header h4 {
+    padding: 1%;
+}
+
+.section-header a:hover {
+    color: #F1B27D;
+}
+
+#login-container {
+    /* text-align: center; */
+    /* width: 100%; */
+    width: 500px; 
+    border: 1px solid #ddd; 
+    padding: 1%;
+    background-color: #fff;
+    margin: 25px auto;
+}
+
+.container-attribution {
+    display: flex;
+    flex-flow: wrap;
+    width: 100%;
+    padding: 0.5%;
+}
+
+.container-ordinateur, .container-utilisateur {
+    padding: 2%;
+}
+
+.item-attribution {
+    margin: 0.2%;
+    background-color: #F9D9BE;
+    width: 32%;
+}
+
+form p {
+    padding: 1%;
+    margin: 2% 0;
+}
+
+form {
+    padding: 2%;
 }
