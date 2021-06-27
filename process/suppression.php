@@ -20,10 +20,10 @@
 
         $req = 'DELETE FROM ' .$cible. ' WHERE ' .$cible. '_id = ' .$id;
 
-        echo $req;
+        // echo $req;
 
         if ($mysqli->query($req)) {
-            $message = '<p class="message"> a bien été supprimée dans la base.<br></p>';
+            $message = '<p class="message">La donné a bien été supprimée dans la base.<br></p>';
             $message .= '<a href="../index.php">Retour page administration</a>';
             echo $message;
             
@@ -33,8 +33,6 @@
             echo $message;
         }
     }
-
-			
 		
 
 ?>

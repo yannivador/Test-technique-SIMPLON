@@ -7,6 +7,8 @@
         header('location:login.php');
     }
 
+    $choix_menu = 1;
+
     require('class/Gestion.php');
     require('configuration.php');
 
@@ -30,46 +32,53 @@
 </head>
 
 <body>
-    <div id="login-container">
-        <form action="attribution2.php" method="POST" >
-            <h1>Formulaire d'attribution</h1>
-            <p>
-                <label>Utilisateur : </label>
-                <select name="utilisateur" >
-                    <?php
-                         if (empty($utilisateurs)) {
-                            echo '<option value="">Aucun utilisateur enregistré</option>';
-                        } else {
-                            foreach ($utilisateurs as $utilisateur) {
-                                echo '<option value="' .$utilisateur['utilisateur_nom']. '">' .$utilisateur['utilisateur_nom']. '</option>';
+    <div id="container">    
+        <header class="grid un">
+            <?php require('main-header.php'); ?>
+            <?php require('menu.php'); ?>
+        </header>
+        <div id="login-container">
+            <form action="attribution2.php" method="POST" >
+                <h1>Formulaire d'attribution</h1>
+                <span>Etape 1/2</span>
+                <p>
+                    <label>Utilisateur : </label>
+                    <select name="utilisateur_choisi" >
+                        <?php
+                            if (empty($utilisateurs)) {
+                                echo '<option value="">Aucun utilisateur enregistré</option>';
+                            } else {
+                                foreach ($utilisateurs as $utilisateur) {
+                                    echo '<option value="' .$utilisateur['utilisateur_id']. '">' .$utilisateur['utilisateur_nom']. '</option>';
+                                }
                             }
-                        }
-                    ?>
-                </select>
-            </p>
-            <p>
-                <label>Ordinateur : </label>
-                <select name="ordi" >
-                    <?php
-                         if (empty($ordinateurs)) {
-                            echo '<option value="">Aucun ordinateur enregistré</option>';
-                        } else {
-                            foreach ($ordinateurs as $ordinateur) {
-                                echo '<option value="' .$ordinateur['ordi_nom']. '">' .$ordinateur['ordi_nom']. '</option>';
+                        ?>
+                    </select>
+                </p>
+                <p>
+                    <label>Ordinateur : </label>
+                    <select name="ordi" >
+                        <?php
+                            if (empty($ordinateurs)) {
+                                echo '<option value="">Aucun ordinateur enregistré</option>';
+                            } else {
+                                foreach ($ordinateurs as $ordinateur) {
+                                    echo '<option value="' .$ordinateur['ordi_id']. '">' .$ordinateur['ordi_nom']. '</option>';
+                                }
                             }
-                        }
-                    ?>
-                </select>
-            </p>
-            <p>
-                <label>Date : </label>
-                <input name="date_choisi" type="date" size="16" />
-            </p>
+                        ?>
+                    </select>
+                </p>
+                <p>
+                    <label>Date : </label>
+                    <input name="date_choisi" type="date" size="16" />
+                </p>
 
-            <p>
-                <input name="submit-form" type="submit" value="Suivant">
-            </p>
-        </form>
+                <p>
+                    <input name="submit-form" type="submit" value="Suivant">
+                </p>
+            </form>
+        </div>
     </div>
 </body>
 <?php
