@@ -17,6 +17,7 @@
     $ordinateurs   = $gestion->selectAllordinateur();
     $attributions  = $gestion->selectAllattribution();
 
+    $choix_menu = 1;
 ?>
 
 <!DOCTYPE html>
@@ -33,8 +34,8 @@
 <body>
     <div id="container">
         <header class="grid un">
-            <h1>Gestion des ordinateurs</h1>
-            <a href="logout">Se deconnecter</a>
+            <?php require('main-header.php'); ?>
+            <?php require('menu.php'); ?>
         </header>
         <section class="grid deux">
             <header class="section-header">
@@ -69,15 +70,23 @@
                 <h2>Liste des attributions</h2>
                 <h3><a href="attribution.php">Nouvelle attribution</a></h3>
             </header>
+            <div class="container-attribution">
             <?php
                 foreach ($attributions as $attribution) {
-                    echo $attribution['attribution_utilisateur_id'] . '<br>';
-                    echo $attribution['attribution_ordi_id'] . '<br>';
-                    echo $attribution['attribution_date'] . '<br>';
-                    echo $attribution['attribution_horaire_debut'] . '<br>';
-                    echo $attribution['attribution_horaire_fin'] . '<br>';
+                    // echo $attribution['attribution_utilisateur_id'] . '<br>';
+                    // echo $attribution['attribution_ordi_id'] . '<br>';
+                    // echo $attribution['attribution_date'] . '<br>';
+                    // echo $attribution['attribution_horaire_debut'] . '<br>';
+                    // echo $attribution['attribution_horaire_fin'] . '<br>';
+                    $result = $gestion->selectOrdiById(1);
+                    $ordi  = $result->fetch_array();
+                    echo $ordi
+                    // var_dump($ordinateur);
+                    // $ch = $gestion->afficheAttribution($attribution['attribution_utilisateur_id'], $ordinateur['ordi_nom'], $attribution['attribution_date'], $attribution['attribution_horaire_debut'], $attribution['attribution_horaire_fin'], $attribution['attribution_id'], 'attribution' );
+                    // echo $ch;
                 }
             ?>
+            </div>
         </section>
     </div>
 </body>
